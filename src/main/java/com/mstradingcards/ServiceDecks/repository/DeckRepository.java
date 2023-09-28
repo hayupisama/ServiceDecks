@@ -17,6 +17,8 @@ public interface DeckRepository extends JpaRepository<Deck, Long> {
 
     // Query to find all decks containing a specific card
     List<Deck> findByCardsContaining(String card);
+    
+    Optional<Deck> findByNameAndPlayerId(String name, Long playerId);
 
 }
 

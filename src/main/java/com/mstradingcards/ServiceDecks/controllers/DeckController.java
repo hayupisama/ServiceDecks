@@ -29,12 +29,7 @@ public class DeckController {
 		return deckService.getAllDecks(playerId);
 	}
 
-	@PutMapping("/updateDeck/{id}")
-	public DeckDTO updateDeck(@PathVariable Long id, @RequestBody DeckDTO deckDTO) {
-		// TODO GET PLAYER ID FROM JWT TOKEN
-		Long playerId = -1L;
-		return deckService.updateDeck(id, deckDTO, playerId);
-	}
+	
 
 	@GetMapping("/getDeckById/{id}")
 	public DeckDTO getDeckById(@PathVariable Long id) {
@@ -48,8 +43,16 @@ public class DeckController {
 		return deckService.createDeck(deckDTO, playerId);
 	}
 
-	@DeleteMapping("/deleteDeck/{id}")
-	public void deleteDeck(@PathVariable Long id) {
-		deckService.deleteDeck(id);
+	@PutMapping("/updateDeck")
+	public DeckDTO updateDeck(@RequestBody DeckDTO deckDTO) {
+		// TODO GET PLAYER ID FROM JWT TOKEN
+		Long playerId = -1L;
+		return deckService.updateDeck(deckDTO, playerId);
+	}
+	@DeleteMapping("/deleteDeck/{name}")
+	public void deleteDeck(@PathVariable String name) {
+		// TODO GET PLAYER ID FROM JWT TOKEN
+		Long playerId = -1L;
+		deckService.deleteDeck(name, playerId);
 	}
 }
